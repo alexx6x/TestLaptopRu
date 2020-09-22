@@ -2,7 +2,7 @@
     "name": "alexx6x/test-laptop-ru",
     "description": "Complex math/test for vacancy",
     "type": "library",
-    "license": "You should get permition from me by email",
+    "license": "BSD-3-Clause",
     "authors": [
         {
             "name": "Alexander Kireev",
