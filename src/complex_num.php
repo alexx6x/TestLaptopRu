@@ -1,6 +1,7 @@
 <?php
+namespace vacancy;
 //You need "pecl install operator-beta" if you whant use oprators
-define('PECL_OPERATOR_INSTALLED', FALSE);
+define('PECL_OPERATOR_INSTALLED', extension_loaded ('operator'));
 
 class complex_num {
 
@@ -86,55 +87,3 @@ class complex_num {
     }
 
 }
-
-function rand_double() {
-    return rand(0, 10000) / 100;
-}
-
-function test($s1 = 5, $s2 = 5) {
-    $complex = [];
-
-    $size = $s1 * $s2;
-    $size <<= 1;
-    for ($i = 0; $i < $s1; $i++) {
-        for ($j = 0; $j < $s2; $j++) {
-            $complex [] = new complex_num([$i, $j]);
-            if (random_int(0, 1)) {
-                $complex [] = new complex_num([rand_double(), rand_double()]);
-            } else {
-                $complex [] = rand_double();
-            }
-        }
-    }
-
-
-
-
-    $operations = ['__add' => '+', '__sub' => '-', '__mul' => '*', '__div' => '/'];
-
-
-
-    for ($i = 0; $i < $size; $i++) {
-        for ($j = 0; $j < $size; $j++) {
-            foreach ($operations as $op => $symbol) {
-                $res = null;
-                if (!($complex[$i] instanceof complex_num))
-                    $complex[$i] = new complex_num($complex[$i]);
-
-                if (PECL_OPERATOR_INSTALLED && $symbol == '+') {
-                    $res = $complex[$i] + $complex[$j];
-                } else {
-                    try {
-                        $res = $complex[$i]->$op($complex[$j]);
-                    } catch (\Exception $e) {
-                        $res = ' ERROR:' . $e->getMessage();
-                    }
-                }
-
-                echo $complex[$i] . ' ' . $symbol . ' ' . $complex[$j] . ' = ' . $res . PHP_EOL;
-            }
-        }
-    }
-}
-
-test();

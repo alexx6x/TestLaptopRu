@@ -1,0 +1,32 @@
+{
+    "name": "alexx6x/test-laptop-ru",
+    "description": "Complex math/test for vacancy",
+    "type": "library",
+    "license": "You should get permition from me by email",
+    "authors": [
+        {
+            "name": "Alexander Kireev",
+            "email": "alexx6x+github@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": "^5.5 || ^7.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9"
+    },
+    "autoload": {
+        "classmap": [
+            "src/"
+        ]
+    },
+    "autoload-dev": {
+        "classmap": [
+            "tests/"
+        ]
+    },
+    "scripts": {
+        "pre-install-cmd": "pecl install operator-beta;echo Ignore this errors!"
+    }
+}
