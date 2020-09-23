@@ -29,7 +29,7 @@ class ComplexNum {
 
     public function __add($num) {
         $ret = clone $this;
-        if ($num instanceof complex_num) {
+        if ($num instanceof ComplexNum) {
             $ret->a += $num->a;
             $ret->b += $num->b;
         } else {
@@ -54,7 +54,7 @@ class ComplexNum {
 
         $a = $this->a * $num->a - $this->b * $num->b;
         $b = $this->a * $num->b + $this->b * $num->a;
-        $ret = new complex_num([$a, $b]);
+        $ret = new ComplexNum([$a, $b]);
         return $ret;
     }
 
@@ -74,7 +74,7 @@ class ComplexNum {
         $b = $this->b * $num->a - $this->a * $num->b;
         @$b /= $div;
 
-        $ret = new complex_num([$a, $b]);
+        $ret = new ComplexNum([$a, $b]);
         return $ret;
     }
 
@@ -83,8 +83,8 @@ class ComplexNum {
     }
 
     private static function safeArg(&$arg) {
-        if (!($arg instanceof complex_num)) {
-            $arg = new complex_num($arg);
+        if (!($arg instanceof ComplexNum)) {
+            $arg = new ComplexNum($arg);
         }
     }
 
