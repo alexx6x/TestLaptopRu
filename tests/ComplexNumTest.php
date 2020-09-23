@@ -1,14 +1,12 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
+use Alexx6x\TestLaptopRu\ComplexNum;
 
 class ComplexNumTest extends TestCase {
-
-    
-
     public function testEasy() {
         
-        $complex = new Alexx6x\TestLaptopRu\ComplexNum([self::randDouble(), self::randDouble()]);
+        $complex = new ComplexNum([self::randDouble(), self::randDouble()]);
         $complex = $complex->__mul(0);
 
         $this->assertEquals('{0;0}', (string) $complex);
@@ -27,9 +25,9 @@ class ComplexNumTest extends TestCase {
 
         for ($i = 0; $i < $s1; $i++) {
             for ($j = 0; $j < $s2; $j++) {
-                $complex [] = new Alexx6x\TestLaptopRu\ComplexNum([$i, $j]);
+                $complex [] = new ComplexNum([$i, $j]);
                 if (random_int(0, 1)) {
-                    $complex [] = new Alexx6x\TestLaptopRu\ComplexNum([self::randDouble(), self::randDouble()]);
+                    $complex [] = new ComplexNum([self::randDouble(), self::randDouble()]);
                 } else {
                     $complex [] = self::randDouble();
                 }
@@ -47,8 +45,8 @@ class ComplexNumTest extends TestCase {
             for ($j = 0; $j < $size; $j++) {
                 foreach ($operations as $op => $symbol) {
                     $res = null;
-                    if (!($complex[$i] instanceof Alexx6x\TestLaptopRu\ComplexNum))
-                        $complex[$i] = new Alexx6x\TestLaptopRu\ComplexNum($complex[$i]);
+                    if (!($complex[$i] instanceof ComplexNum))
+                        $complex[$i] = new ComplexNum($complex[$i]);
 
                     if (PECL_OPERATOR_INSTALLED && $symbol == '+') {
                         $res = $complex[$i] + $complex[$j];
