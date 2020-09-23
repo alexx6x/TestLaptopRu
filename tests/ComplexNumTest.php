@@ -4,14 +4,10 @@ use PHPUnit\Framework\TestCase;
 
 class ComplexNumTest extends TestCase {
 
-    private static function randDouble() {
-        return rand(0, 10000) / 100;
-    }
+    
 
     public function testEasy() {
-
-
-
+        
         $complex = new Alexx6x\TestLaptopRu\ComplexNum([self::randDouble(), self::randDouble()]);
         $complex = $complex->__mul(0);
 
@@ -19,7 +15,6 @@ class ComplexNumTest extends TestCase {
     }
 
     public function testFirstVariant() {
-
         $s1 = 5;
         $s2 = 5;
 
@@ -73,5 +68,10 @@ class ComplexNumTest extends TestCase {
 
         $this->assertEquals(10000, $res_count);
     }
+    
+    private static function randDouble() {
+        return rand(0, 10000) / 100;
+    }
+    
 
 }
