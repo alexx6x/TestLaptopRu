@@ -1,24 +1,18 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 use PHPUnit\Framework\TestCase;
 
-class complex_num_test extends TestCase {
+class ComplexNumTest extends TestCase {
 
-    private static function rand_double() {
+    private static function randDouble() {
         return rand(0, 10000) / 100;
     }
 
-    public function test_easy() {
+    public function testEasy() {
 
 
 
-        $complex = new vacancy\complex_num([self::rand_double(), self::rand_double()]);
+        $complex = new Alexx6x\TestLaptopRu\ComplexNum([self::randDouble(), self::randDouble()]);
         $complex = $complex->__mul(0);
 
         $this->assertEquals('{0;0}', (string) $complex);
@@ -38,11 +32,11 @@ class complex_num_test extends TestCase {
 
         for ($i = 0; $i < $s1; $i++) {
             for ($j = 0; $j < $s2; $j++) {
-                $complex [] = new vacancy\complex_num([$i, $j]);
+                $complex [] = new Alexx6x\TestLaptopRu\ComplexNum([$i, $j]);
                 if (random_int(0, 1)) {
-                    $complex [] = new vacancy\complex_num([self::rand_double(), self::rand_double()]);
+                    $complex [] = new Alexx6x\TestLaptopRu\ComplexNum([self::randDouble(), self::randDouble()]);
                 } else {
-                    $complex [] = self::rand_double();
+                    $complex [] = self::randDouble();
                 }
             }
         }
@@ -58,8 +52,8 @@ class complex_num_test extends TestCase {
             for ($j = 0; $j < $size; $j++) {
                 foreach ($operations as $op => $symbol) {
                     $res = null;
-                    if (!($complex[$i] instanceof vacancy\complex_num))
-                        $complex[$i] = new vacancy\complex_num($complex[$i]);
+                    if (!($complex[$i] instanceof Alexx6x\TestLaptopRu\ComplexNum))
+                        $complex[$i] = new Alexx6x\TestLaptopRu\ComplexNum($complex[$i]);
 
                     if (PECL_OPERATOR_INSTALLED && $symbol == '+') {
                         $res = $complex[$i] + $complex[$j];
@@ -81,7 +75,3 @@ class complex_num_test extends TestCase {
     }
 
 }
-
-//function tes
-
-//test();

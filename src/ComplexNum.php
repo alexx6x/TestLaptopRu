@@ -1,9 +1,11 @@
 <?php
-namespace vacancy;
-//You need "pecl install operator-beta" if you whant use oprators
-define('PECL_OPERATOR_INSTALLED', extension_loaded ('operator'));
 
-class complex_num {
+namespace Alexx6x\TestLaptopRu;
+
+//You need "pecl install operator-beta" if you whant use oprators
+define('PECL_OPERATOR_INSTALLED', extension_loaded('operator'));
+
+class ComplexNum {
 
     protected $a;
     protected $b;
@@ -37,7 +39,7 @@ class complex_num {
     }
 
     public function __sub($num) {
-        self::safe_arg($num);
+        self::safeArg($num);
         if (PECL_OPERATOR_INSTALLED) {
             $ret = $this + (-1) * $num;
         } else {
@@ -48,7 +50,7 @@ class complex_num {
 
     //z1⋅z2=(x1+y1i)⋅(x2+y2i)=(x1⋅x2−y1⋅y2)+(x2⋅y1+x1⋅y2)i
     public function __mul($num) {
-        self::safe_arg($num);
+        self::safeArg($num);
 
         $a = $this->a * $num->a - $this->b * $num->b;
         $b = $this->a * $num->b + $this->b * $num->a;
@@ -60,7 +62,7 @@ class complex_num {
     //in division i dont check on zero, as style of real numbers math realysed in this lang
     //and waiting exeption of real math if will be only if z2 == 0
     public function __div($num) {
-        self::safe_arg($num);
+        self::safeArg($num);
 
         $div = pow($num->a, 2) + pow($num->b, 2);
 
@@ -76,14 +78,14 @@ class complex_num {
         return $ret;
     }
 
-    private static function safe_arg(&$arg) {
+    public function __toString() {
+        return '{' . $this->a . ';' . $this->b . '}';
+    }
+
+    private static function safeArg(&$arg) {
         if (!($arg instanceof complex_num)) {
             $arg = new complex_num($arg);
         }
-    }
-
-    public function __toString() {
-        return '{' . $this->a . ';' . $this->b . '}';
     }
 
 }
